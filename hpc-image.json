@@ -23,7 +23,7 @@
             "availability_domain": "{{user `availability_domain`}}",
             "subnet_ocid": "{{user `subnet_ocid`}}",
             "base_image_ocid": "{{user `base_image_ocid`}}",
-            "image_name": "iad-vma-hpc-image",
+            "image_name": "vma-hpc-image",
             "shape": "{{user `vm_shape`}}",
             "ssh_username": "opc",
             "ssh_timeout": "20m"
