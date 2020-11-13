@@ -22,3 +22,5 @@ This is a CircleCI pipeline that uses Packer to build an OCI image.
 
 **AVAILABILITY_DOMAIN:** Availability domain where you have limits to deploy instances with the INSTANCE_SHAPE
 
+**OCI_API_KEY_ENCODED:** Base64 encoded string of your OCI API private key. You can use `cat <location of your API key> | base64 -b 0` in MacOS and `cat <location of your API key> | base64 -w 0` in Linux.
+
