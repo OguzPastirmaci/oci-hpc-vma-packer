@@ -1,0 +1,39 @@
+version: 2
+jobs:
+  validate-template:
+    docker:
+      - image: hashicorp/packer:1.6.5
+    steps:
+      - checkout
+      - run:
+          name: Copy OCI API key
+          command: echo $OCI_API_KEY_ENCODED | base64 -d > ./oci_api_key.pem
+      - run:
+          name: Set OCI API key permissions
+          command: chmod go-rwx ./oci_api_key.pem
+      - run:
+          name: Validate image
+          command: packer validate hpc-image.json
+  build-image:
+    docker:
+      - image: hashicorp/packer:1.6.5
+    steps:
+      - checkout
+      - run:
+          name: Copy OCI API key
+          command: echo $OCI_API_KEY_ENCODED | base64 -d > ./oci_api_key.pem
+      - run:
+          name: Set OCI API key permissions
+          command: chmod go-rwx ./oci_api_key.pem
+      - run:
+          name: Build image
+          command: packer build hpc-image.json
+          no_output_timeout: 30m
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - validate-template
+      - build-image:
+          requires:
+            - validate-template

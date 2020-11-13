@@ -1,0 +1,39 @@
+{
+    "variables": {
+        "user_ocid": "{{env `USER_OCID`}}",
+        "tenancy_ocid": "{{env `TENANCY_OCID`}}",
+        "fingerprint": "{{env `FINGERPRINT`}}",
+        "private_key_path": "{{env `PRIVATE_KEY_PATH`}}",
+        "compartment_ocid": "{{env `COMPARTMENT_OCID`}}",
+        "subnet_ocid": "{{env `SUBNET_OCID`}}",
+        "base_image_ocid": "{{env `BASE_IMAGE_OCID`}}",
+        "vm_shape": "{{env `INSTANCE_SHAPE`}}",
+        "availability_domain": "{{env `AVAILABILITY_DOMAIN`}}"
+    },
+    "builders": [
+        {
+            "name": "IAD",
+            "type": "oracle-oci",
+            "tenancy_ocid": "{{user `tenancy_ocid`}}",
+            "user_ocid": "{{user `user_ocid`}}",
+            "compartment_ocid": "{{user `compartment_ocid`}}",
+            "fingerprint": "{{user `fingerprint`}}",
+            "key_file": "./oci_api_key.pem",
+            "region": "us-ashburn-1",
+            "availability_domain": "{{user `availability_domain`}}",
+            "subnet_ocid": "{{user `subnet_ocid`}}",
+            "base_image_ocid": "{{user `base_image_ocid`}}",
+            "image_name": "iad-vma-hpc-image",
+            "shape": "{{user `vm_shape`}}",
+            "ssh_username": "opc",
+            "ssh_timeout": "20m"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "gcc9.sh",
+            "pause_before": "60s"
+        }
+    ]
+}
