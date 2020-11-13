@@ -2,7 +2,7 @@
 
 This is a CircleCI pipeline that uses Packer to build an OCI image.
 
-### 1- Create the following environment variables in CircleCI:
+### Create the following environment variables in CircleCI:
 
 **USER_OCID**: ID of the user that Packer will use to connect to your tenancy
 
