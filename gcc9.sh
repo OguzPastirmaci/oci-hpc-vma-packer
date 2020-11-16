@@ -5,7 +5,6 @@ set -e
 # Install Developer Toolset 9
 sudo yum install -y devtoolset-9
 
-# Build AERON
 # Install cmake 3.18.4
 cd ~
 wget https://github.com/Kitware/CMake/releases/download/v3.18.4/cmake-3.18.4-Linux-x86_64.sh
