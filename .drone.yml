@@ -3,11 +3,12 @@ type: docker
 name: default
 
 steps:
-- name: validate
+- name: API KEY
   image: hashicorp/packer:1.6.5
   environment:
     OCI_API_KEY_ENCODED:
       from_secret: OCI_API_KEY_ENCODED
   commands:
-  - echo $OCI_API_KEY_ENCODED
+  - echo $OCI_API_KEY_ENCODED | base64 -d > ./oci_api_key.pem
+  - chmod go-rwx ./oci_api_key.pem
   - packer validate hpc-image.json
