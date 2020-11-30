@@ -31,8 +31,6 @@ steps:
       #from_secret: AVAILABILITY_DOMAIN
   commands:
   - echo $OCI_API_KEY_ENCODED | base64 -d > ./oci_api_key.pem
-  - echo $AVAILABILITY_DOMAIN > ./test.info1
-  - cat ./test.info
   - chmod go-rwx ./oci_api_key.pem
   - packer validate hpc-image.json
-  - packer build -var 'AVAILABILITY_DOMAIN=VXpT:US-ASHBURN-AD-2' hpc-image.json
+  - packer build hpc-image.json
