@@ -5,5 +5,9 @@ name: default
 steps:
 - name: validate
   image: hashicorp/packer:1.6.5
+  environment:
+    OCI_API_KEY_ENCODED:
+      from_secret: oci_api_key_encoded
   commands:
+  - cat $OCI_API_KEY_ENCODED
   - packer validate hpc-image.json
