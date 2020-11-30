@@ -6,8 +6,8 @@ steps:
 - name: validate
   image: hashicorp/packer:1.6.5
   environment:
-    TEST:
-      from_secret: test
+    OCI_API_KEY_ENCODED:
+      from_secret: OCI_API_KEY_ENCODED
   commands:
-  - echo $TEST
+  - echo $OCI_API_KEY_ENCODED
   - packer validate hpc-image.json
