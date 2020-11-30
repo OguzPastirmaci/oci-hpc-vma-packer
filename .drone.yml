@@ -11,6 +11,22 @@ steps:
       from_secret: OCI_API_KEY_ENCODED
     USER_OCID:
       from_secret: USER_OCID
+    TENANCY_OCID:
+      from_secret: TENANCY_OCID
+    FINGERPRINT:
+      from_secret: FINGERPRINT
+    COMPARTMENT_OCID:
+      from_secret: COMPARTMENT_OCID
+    SUBNET_OCID:
+      from_secret: SUBNET_OCID
+    BASE_IMAGE_OCID:
+      from_secret: BASE_IMAGE_OCID
+    INSTANCE_SHAPE:
+      from_secret: INSTANCE_SHAPE
+    REGION:
+      from_secret: REGION
+    AVAILABILITY_DOMAIN:
+      from_secret: AVAILABILITY_DOMAIN  
   commands:
   - echo $OCI_API_KEY_ENCODED | base64 -d > ./oci_api_key.pem
   - chmod go-rwx ./oci_api_key.pem
