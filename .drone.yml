@@ -31,9 +31,8 @@ steps:
       #from_secret: AVAILABILITY_DOMAIN
   commands:
   - echo $OCI_API_KEY_ENCODED | base64 -d > ./oci_api_key.pem
-  - echo $USER_OCID
-  - echo $AVAILABILITY_DOMAIN
-  - echo $${AVAILABILITY_DOMAIN}
+  - echo $AVAILABILITY_DOMAIN > ./test.info
+  - cat ./test.info
   - chmod go-rwx ./oci_api_key.pem
   - packer validate hpc-image.json
   - packer build -debug hpc-image.json
