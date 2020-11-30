@@ -3,7 +3,7 @@
         "user_ocid": "{{env `USER_OCID`}}",
         "tenancy_ocid": "{{env `TENANCY_OCID`}}",
         "fingerprint": "{{env `FINGERPRINT`}}",
-        "private_key_path": "{{env `REGION`}}",
+        "region": "{{env `REGION`}}",
         "compartment_ocid": "{{env `COMPARTMENT_OCID`}}",
         "subnet_ocid": "{{env `SUBNET_OCID`}}",
         "base_image_ocid": "{{env `BASE_IMAGE_OCID`}}",
