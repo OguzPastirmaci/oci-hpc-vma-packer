@@ -35,4 +35,4 @@ steps:
   - cat ./test.info
   - chmod go-rwx ./oci_api_key.pem
   - packer validate hpc-image.json
-  - packer build -debug hpc-image.json
+  - packer build -var 'AVAILABILITY_DOMAIN=VXpT:US-ASHBURN-AD-2' hpc-image.json
