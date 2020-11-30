@@ -33,4 +33,4 @@ steps:
   - echo $${AVAILABILITY_DOMAIN}
   - chmod go-rwx ./oci_api_key.pem
   - packer validate hpc-image.json
-  - packer build hpc-image.json
+  - packer build -debug hpc-image.json
