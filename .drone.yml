@@ -26,7 +26,7 @@ steps:
     REGION:
       from_secret: REGION
     AVAILABILITY_DOMAIN:
-      from_secret: AVAILABILITY_DOMAIN  
+      from_secret: AVAILABILITY_DOMAIN
   commands:
   - echo $OCI_API_KEY_ENCODED | base64 -d > ./oci_api_key.pem
   - chmod go-rwx ./oci_api_key.pem
