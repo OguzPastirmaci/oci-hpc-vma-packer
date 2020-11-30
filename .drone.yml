@@ -5,7 +5,12 @@ name: default
 steps:
 - name: API KEY
   image: hashicorp/packer:1.6.5
-  secrets: [ OCI_API_KEY_ENCODED, USER_OCID, TENANCY_OCID, FINGERPRINT, COMPARTMENT_OCID, SUBNET_OCID, BASE_IMAGE_OCID, INSTANCE_SHAPE, REGION, AVAILABILITY_DOMAIN ]
+  # secrets: [ OCI_API_KEY_ENCODED, USER_OCID, TENANCY_OCID, FINGERPRINT, COMPARTMENT_OCID, SUBNET_OCID, BASE_IMAGE_OCID, INSTANCE_SHAPE, REGION, AVAILABILITY_DOMAIN ]
+  environment:
+    OCI_API_KEY_ENCODED:
+      from_secret: OCI_API_KEY_ENCODED
+    USER_OCID:
+      from_secret: USER_OCID
   commands:
   - echo $OCI_API_KEY_ENCODED | base64 -d > ./oci_api_key.pem
   - chmod go-rwx ./oci_api_key.pem
