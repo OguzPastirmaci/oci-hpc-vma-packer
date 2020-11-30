@@ -9,5 +9,5 @@ steps:
     TEST:
       from_secret: test
   commands:
-  - cat $TEST
+  - echo $TEST
   - packer validate hpc-image.json
