@@ -7,6 +7,8 @@ steps:
   image: hashicorp/packer:1.6.5
   # secrets: [ OCI_API_KEY_ENCODED, USER_OCID, TENANCY_OCID, FINGERPRINT, COMPARTMENT_OCID, SUBNET_OCID, BASE_IMAGE_OCID, INSTANCE_SHAPE, REGION, AVAILABILITY_DOMAIN ]
   environment:
+    AVAILABILITY_DOMAIN:
+      from_secret: AVAILABILITY_DOMAIN
     OCI_API_KEY_ENCODED:
       from_secret: OCI_API_KEY_ENCODED
     USER_OCID:
@@ -29,6 +31,7 @@ steps:
       #from_secret: AVAILABILITY_DOMAIN
   commands:
   - echo $OCI_API_KEY_ENCODED | base64 -d > ./oci_api_key.pem
+  - echo $USER_OCID
   - echo $AVAILABILITY_DOMAIN
   - echo $${AVAILABILITY_DOMAIN}
   - chmod go-rwx ./oci_api_key.pem
