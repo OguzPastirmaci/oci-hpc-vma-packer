@@ -32,6 +32,5 @@ steps:
   commands:
   - echo $OCI_API_KEY_ENCODED | base64 -d > ./oci_api_key.pem
   - chmod go-rwx ./oci_api_key.pem
-  - cat ./oci_api_key.pem
   - packer validate hpc-image.json
   - packer build -debug hpc-image.json
